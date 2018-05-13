@@ -1,9 +1,9 @@
-#!/bin/bashd
+#!/bin/bash
 #Creator : DorShamay
 #Porpuse of the script : Install ownCloud
 #version : 0.0.1
 
-line = *#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+line=*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
 echo "Welcome to DorShamay's ownCloud Installation script"
 
@@ -18,13 +18,13 @@ if [ $(id -u) != "0" ]; then
 MainMenu()
 {
   echo "Please pick distro from the list"
-  select distro "Centos-RedHat" "Debian" "Quit"
+  select distro in "Centos-RedHat" "Debian" "Quit"
     do
       case $distro in
         "Centos-Redhat")
 				Centos_Check
         ;;
-        "Debian"
+        "Debian")
 				Debian_Check
         ;;
         "Quit")
@@ -40,7 +40,7 @@ MainMenu()
 Debian_Check()
 {
   var=$(cat /etc/*-release |grep 'ID='|grep -v 'VERSION*'|awk -F= '{ print $2}')
-    if [[ $var = debian|ubuntu ]]; then
+    if [[ $(var) = debian|ubuntu ]]; then
       WelcomeDebCloud
     else
       echo "Are you sure your using Debian distro?"
