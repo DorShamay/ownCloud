@@ -22,8 +22,10 @@ MainMenu()
     do
       case $distro in
         "Centos-Redhat")
+				Centos_Check
         ;;
         "Debian"
+				Debian_Check
         ;;
         "Quit")
         exit 0
