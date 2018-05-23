@@ -38,6 +38,7 @@ MainMenu()
     done
 }
 
+# Checking if using Debian Distro
 Debian_Check()
 {
   ans=$(cat /etc/*-release |grep 'ID='|grep -v 'VERSION*'|awk -F= '{ print $2}')
@@ -48,6 +49,7 @@ Debian_Check()
     fi
 }
 
+#checks if using Centos Distro
 Centos_Check()
 {
   cat /etc/*-release |grep 'ID='|grep -v 'VERSION*'|awk -F= '{ print $2}'
@@ -58,6 +60,7 @@ Centos_Check()
   fi
 }
 
+#Welcome to debian installation of debian
 WelcomeDebCloud()
 {
  printf $line
@@ -65,5 +68,7 @@ WelcomeDebCloud()
  echo "Welcome to the Debian ownCloud Installation script"
  printf $line
 }
+
+
 
 MainMenu
