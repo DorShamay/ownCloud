@@ -3,7 +3,8 @@
 #Porpuse of the script : Install ownCloud
 #version : 0.0.1
 
-line=*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+line=*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+
 
 echo "Welcome to DorShamay's ownCloud Installation script"
 
@@ -21,7 +22,7 @@ MainMenu()
   select distro in "Centos-RedHat" "Debian" "Quit"
     do
       case $distro in
-        "Centos-Redhat")
+        "Centos-RedHat")
 				Centos_Check
         ;;
         "Debian")
@@ -39,8 +40,8 @@ MainMenu()
 
 Debian_Check()
 {
-  var=$(cat /etc/*-release |grep 'ID='|grep -v 'VERSION*'|awk -F= '{ print $2}')
-    if [[ $(var) = debian|ubuntu ]]; then
+  ans=$(cat /etc/*-release |grep 'ID='|grep -v 'VERSION*'|awk -F= '{ print $2}')
+    if [[ $ans = debian ]]; then
       WelcomeDebCloud
     else
       echo "Are you sure your using Debian distro?"
@@ -50,7 +51,7 @@ Debian_Check()
 Centos_Check()
 {
   cat /etc/*-release |grep 'ID='|grep -v 'VERSION*'|awk -F= '{ print $2}'
-  if [[ $var = centos ]]; then
+  if [[ $ans = centos ]]; then
     WelcomeCentCloud
   else
     echo "Are you sure your using Centos Distro?"
@@ -60,6 +61,9 @@ Centos_Check()
 WelcomeDebCloud()
 {
  printf $line
+ printf '\n'
  echo "Welcome to the Debian ownCloud Installation script"
  printf $line
 }
+
+MainMenu
